@@ -4,6 +4,7 @@ sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 
 import nltk
 nltk.download('punkt')
+nltk.download('punkt_tab')
 
 import streamlit as st
 from PIL import Image

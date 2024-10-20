@@ -60,21 +60,10 @@ class BaseNode(abc.ABC, Generic[NodeInput]):
         return res
 
 
+    @abc.abstractmethod
     def greeting_message(self) -> Optional[MessageOutput]:
-        """Default greeting message"""
-        return MessageOutput(
-            message="Hello! How can I assist you today?",
-            role="assistant"
-        )
+        pass
 
     @abc.abstractmethod
     def no_edges_found(self, user_input: NodeInput) -> Optional[MessageOutput]:
         pass
-
-    # @abc.abstractmethod
-    # def greeting_message(self) -> Optional[MessageOutput]:
-    #     pass
-
-    # @abc.abstractmethod
-    # def no_edges_found(self, user_input: NodeInput) -> Optional[MessageOutput]:
-    #     pass

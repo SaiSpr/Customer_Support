@@ -25,8 +25,19 @@ class CustomerSupportPipeline:
                                                     final_state=True)
         self._call_customer_edge = CallCustomerEdge(llm_model=self._llm_model, out_node=self._call_customer_node)
 
+        user_info = {
+                        "name": "John Doe",               # Replace with actual user data
+                        "email": "john.doe@example.com",  # Replace with actual user data
+                        "subscription": "pro",             # Replace with actual user data
+                        "user_id": 123,                   # Replace with actual user data
+                        "phone": "123-456-7890",          # Replace with actual user data
+                        "language": "English"              # Replace with actual user data
+                    }
+
+        user_profile = UserProfile(**user_info)
+
         self._help_node = AuthenticatedUserNode(llm_model=self._llm_model,
-                                                pydantic_object=None,
+                                                pydantic_object=user_profile,
                                                 edges=[self._call_customer_edge])
 
         self._user_info_chain = UserInfoChainBasedEdge(model=self._llm_model,
